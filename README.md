@@ -418,3 +418,22 @@ In C++ we can use try, catch and throw keywords, providing more control over err
             cout << &numRef // print <memory-address> // address-of operator (&)
 
             numRef = 52 // or num = 52
+
+## Day 5/60
+
+
+### Topics:
+
+    => Dinamic Types:
+
+        Generic Pointers: A void pointer is a generic pointer that can point to objects of any data
+        type.
+
+        Eg.: void* void_ptr;
+
+        std::Any:
+
+        C++17 introduced the std::any class with represents a generalized type-safe container for
+        single values of any type.
+
+        Eg.: std::any any_valur;

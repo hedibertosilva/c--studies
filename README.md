@@ -1,10 +1,14 @@
-# Day 1/60
+# Project 60 Days
+
+From zero to intermediate in 60 days.
+
+## Day 1/60
 
 What is C++?
 
 Is an extension of the C programming language, adding features such as classes, objects, and exceptions.
 
-## Topics:
+### Topics:
     => #include
 
         We use the #include to directive to include libraries or header files into our program.
@@ -128,7 +132,7 @@ Is an extension of the C programming language, adding features such as classes, 
                 return 0;
             }
 
-# Day 2/60
+## Day 2/60
 
 C vs C++
 
@@ -250,7 +254,7 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
              ~ 0000 0101 = 1111 1010
 
-# Day 3/60
+## Day 3/60
 
 
 ### Topics:
@@ -316,7 +320,7 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         It is a unnamed function.
 
-# Day 4/60
+## Day 4/60
 
 
 ### Topics:

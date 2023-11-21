@@ -501,3 +501,52 @@ In C++ we can use try, catch and throw keywords, providing more control over err
         Code Segment:
 
             The Code segment (also known as the Text segment) stores the executable code (machine code) of the program. It's usally located in a read-only area of memory to prevent accidental modification.
+
+    => Object Lifetime:
+
+        - Static Storage Duration:
+
+            Includes all the variables that are loaded at the beginning of the program
+            and are destroyed when the program terminates.
+
+            Global variables, static data members and static local variables fall into this category:
+
+            int globalVar;
+            class MyClass {
+                static int staticVar;
+            };
+            void myFunction() {
+                static int localVar;
+            }
+
+        - Thread Storage Duration:
+
+            Objects that exists along the lifetime of the thread they belong to.
+            They are created when a thread stats and destroyed when the thread exits.
+            Thread storage duration can be specified using the thread_local keyword.
+
+            thread_local int my_var;
+
+        - Automatic Storage Duration:
+
+            Objects with automatic storage duration are created at the point of definition and
+            destroyed when the scope in which they are declated is exited.
+
+            These objects are also known as "local" and "stack" objects.
+            Function parameters and local non-static variables fall into this category.
+
+            void myFunction() {
+                int local_var;
+            };
+
+        - Dynamic Storage Duration:
+
+            Objects create by the programmers and they are allocated at runtime.
+            These objects are created using the keywords new and malloc.
+
+            These memory is not deallocated automatic when the scope exits
+            needing that the programmer declarate the exact momment when this memories should
+            be released when it's no longer needed, to avoid memory leak issues;
+
+            int *ptr = new int;
+            delete ptr;

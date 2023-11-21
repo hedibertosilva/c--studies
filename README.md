@@ -437,3 +437,19 @@ In C++ we can use try, catch and throw keywords, providing more control over err
         single values of any type.
 
         Eg.: std::any any_valur;
+
+
+## Day 6/60
+
+
+### Topics:
+
+    => Function pointer:
+
+        Create an alias for a funcion through pointer.
+
+        int add(int x, int y) {
+            return x + y;
+        };
+
+        int (*funcptr) (int, int) = add;

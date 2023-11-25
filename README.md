@@ -347,7 +347,7 @@ In C++ we can use try, catch and throw keywords, providing more control over err
             | Type Name     | 32-bit size | 64-bit size |
             --------------------------------------------+
             | char          | 1 byte      | 1 byte      |
-            | short         | 2 bytes     | 2 bytes     |
+            | short int     | 2 bytes     | 2 bytes     |
             | int           | 4 bytes     | 4 bytes     |
             | long int      | 4 bytes     | 8 bytes     |
             | long long int | 8 bytes     | 8 bytes     |
@@ -462,8 +462,11 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         Stack Memory:
 
-            It is used for automatic storage duration variables, such as local variables
-            and function call data. Stack memory is managed by the compiler, and  it's allocation and deallocation are done automatically. The stack memory is also a LIFO (Last In First Out) data structure, meaning that the most recent data allocated is the first to be deallocated.
+            Summary: local variables and function call data.
+
+            It is used for automatic storage duration variables, such as local variables and function call data.
+            Stack memory is managed by the compiler, and  it's allocation and deallocation are done automatically.
+            The stack memory is also a LIFO (Last In First Out) data structure, meaning that the most recent data allocated is the first to be deallocated.
 
             void functionExample() {
                 int x = 10; // x is stored in the stack memory
@@ -471,7 +474,11 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         Heap Memory:
 
-            It is used for dynamic storage duration variables, such as objects created using the new keyword. The programmer has control over the allocation and deallocation of heap memory using new and delete operators. Heap memory is a larger pool of memory than the stack, but has a slower access time.
+            Summary:objects created using the "new" keyword
+
+            It is used for dynamic storage duration variables, such as objects created using the new keyword.
+            The programmer has control over the allocation and deallocation of heap memory using new and delete operators.
+            Heap memory is a larger pool of memory than the stack, but has a slower access time.
 
             void functionExample() {
                 int *p = new int; // dynamically allocated in in heap memory
@@ -484,10 +491,10 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         Data Segment:
 
+            Summary: global, static, and constant variables.
+
             The Data segment is composed of two parts: initialized and uninitialized data segment.
-
-            Initialized data segment stores global, static, and constant variables with inital values.
-
+            Initialized data segment stores global, static, and constant variables with initial values.
             Uninitialized data segment stores uninitialized global and static variables.
 
             // Initialized data segment
@@ -500,16 +507,21 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         Code Segment:
 
-            The Code segment (also known as the Text segment) stores the executable code (machine code) of the program. It's usally located in a read-only area of memory to prevent accidental modification.
+            Summary: store all the executable code in read-only memory area.
+
+            The Code segment (also known as the Text segment) stores the executable code (machine code) of the program.
+            It's usually located in a read-only area of memory to prevent accidental modification.
 
     => Object Lifetime:
 
         - Static Storage Duration:
 
-            Includes all the variables that are loaded at the beginning of the program
-            and are destroyed when the program terminates.
+            Summary:
 
-            Global variables, static data members and static local variables fall into this category:
+                Includes all the variables that are loaded at the beginning of the program
+                and are destroyed when the program terminates.
+
+                Global variables, static data members and static local variables fall into this category:
 
             int globalVar;
             class MyClass {
@@ -521,19 +533,23 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         - Thread Storage Duration:
 
-            Objects that exists along the lifetime of the thread they belong to.
-            They are created when a thread stats and destroyed when the thread exits.
-            Thread storage duration can be specified using the thread_local keyword.
+            Summary:
+
+                Objects that exists along the lifetime of the thread they belong to.
+                They are created when a thread stats and destroyed when the thread exits.
+                Thread storage duration can be specified using the thread_local keyword.
 
             thread_local int my_var;
 
         - Automatic Storage Duration:
 
-            Objects with automatic storage duration are created at the point of definition and
-            destroyed when the scope in which they are declated is exited.
+            Summary:
 
-            These objects are also known as "local" and "stack" objects.
-            Function parameters and local non-static variables fall into this category.
+                Objects with automatic storage duration are created at the point of definition and
+                destroyed when the scope in which they are declated is exited.
+
+                These objects are also known as "local" and "stack" objects.
+                Function parameters and local non-static variables fall into this category.
 
             void myFunction() {
                 int local_var;
@@ -541,12 +557,44 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         - Dynamic Storage Duration:
 
-            Objects create by the programmers and they are allocated at runtime.
-            These objects are created using the keywords new and malloc.
+            Summary:
+                Objects create by the programmers and they are allocated at runtime.
+                These objects are created using the keywords new and malloc.
 
-            These memory is not deallocated automatic when the scope exits
-            needing that the programmer declarate the exact momment when this memories should
-            be released when it's no longer needed, to avoid memory leak issues;
+                These memory is not deallocated automatic when the scope exits
+                needing that the programmer declarate the exact momment when this memories should
+                be released when it's no longer needed, to avoid memory leak issues;
 
             int *ptr = new int;
             delete ptr;
+
+
+        Relationship:
+
+            Data Segment -> Static Storage Duration (global, static and constant variables)
+            Stack Memory -> Automatic Storage Duration (local variables)
+            Heap Memory  -> Dynamic Storage Duration (objects created using the new or malloc keyworkds)
+
+
+## Day 7/60
+
+
+### Topics:
+
+    => Smarter Pointers:
+
+        - unique_ptr:
+
+            std::uniue_ptr is a smater pointer provided by the C++ Standard Library.
+            Works on the concept of exclusive ownership - meaning only one unique_pr is allowed
+            to own an object at a time.
+
+            This concept helps to prevent issues like dangling pointers, reduce memory leaks,
+            and eliminates the need for manual memory management.
+
+            When the unique_ptr goes out of scope, it automatically deletes the object it owns.
+
+        => shared_ptr:
+
+
+        => weak_ptr:

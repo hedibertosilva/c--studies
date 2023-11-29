@@ -585,7 +585,7 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
         - unique_ptr:
 
-            std::uniue_ptr is a smater pointer provided by the C++ Standard Library.
+            std::unique_ptr is a smater pointer provided by the C++ Standard Library.
             Works on the concept of exclusive ownership - meaning only one unique_pr is allowed
             to own an object at a time.
 
@@ -594,7 +594,38 @@ In C++ we can use try, catch and throw keywords, providing more control over err
 
             When the unique_ptr goes out of scope, it automatically deletes the object it owns.
 
-        => shared_ptr:
+## Day 8/60
 
 
-        => weak_ptr:
+### Topics:
+
+    => shared_ptr:
+
+        A shared_ptr is a type of smart pointer in C++ that allows multiple pointers to share
+        ownership of dynamically allocated object. The object will be automatically deallocated
+        only when the last shared_ptr that points to it is destroyed.
+
+    => Raw Pointers: low-level constructs that directly hold a memory address. They can be used for
+       manually allocating memory, creating dynamic arrays, and passing values efficiently, among other things.
+
+        - New Operator:
+
+            The new operator is used to allocate memory on the heap. The memory allocated using new remains available
+            until you exclicitly deallocate it using the corresponding delete operator.
+
+                int* ptr = new int;
+                *ptr = 42;
+
+        - Delete Operator:
+
+            delete ptr;
+
+        - Array:
+
+            int* ptr = new int[10];
+
+            delete[] ptr;
+
+        - Memory Leakeage:
+
+            Memory leakage occurs when a program allocates memory in the heap but does not release the memory back to the operating system when it is no longer needed. Over time, this leads to exhaustion of available memory, resulting in low system performance or crashes.
